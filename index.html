@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Bestellapp</title>
+
+        <link
+            rel="shortcut icon"
+            href="./assets/favicon/favicon.ico"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./css/standard.css" />
+        <link rel="stylesheet" href="./css/fonts.css" />
+        <link rel="stylesheet" href="./css/basket.css" />
+        <link rel="stylesheet" href="./css/assets.css" />
+        <link rel="stylesheet" href="./css/overlayMenu.css" />
+        <link rel="stylesheet" href="./css/fonts.css" />
+    </head>
+    <body onload="init()">
+        <include-html src="./templates/header.html"></include-html>
+
+        <main>
+            <section class="menu1">
+                <div class="menu-container" id="dish">
+                    <h2>Speisekarte</h2>
+                    <div id="menu"></div>
+                </div>
+                <div class="basket-container">
+                    <h2>Einkaufswagen</h2>
+                    <div id="shoppingBasket"></div>
+                </div>
+            </section>
+        </main>
+
+        <include-html src="./templates/footer.html"></include-html>
+
+        <script src="./script.js"></script>
+        <script src="./js/include-html.js"></script>
+        <script src="./js/overlayMenu.js"></script>
+        <script src="./js/db.js"></script>
+        <script src="./js/tamplats.js"></script>
+    </body>
+</html>
