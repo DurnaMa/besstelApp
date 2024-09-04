@@ -1,6 +1,7 @@
 function init() {
   renderMenus();
   renderShoppingBasket();
+  addToBasket();
 }
 
 function renderMenus() {
@@ -57,7 +58,8 @@ function renderShoppingBasket() {
 
   if (basketContainer) {
     basketContainer.innerHTML = /*html*/ `
-        <h3>Der Einkaufswagen ist leer.</h3>
+        <h3>Fülle deinen Warenkorb</h3>
+        <h4>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</h4>
     `;
   }
 }
@@ -66,15 +68,30 @@ function addBasket(categoryIndex, itemIndex) {
   let basketContainer = document.getElementById(`shoppingBasket`);
 
   if (menu[categoryIndex] && menu[categoryIndex].items[itemIndex]) {
-    
     let item = menu[categoryIndex].items[itemIndex];
-    
+
     basketContainer.innerHTML += /*html*/ `
-            <h3>${menu[categoryIndex].category}</h3>
-            <h3>${item.dish} - ${item.price.toFixed(2)}€</h3>
-            <img class="icon" src="./assets/icons/add.png" alt="add">
-            <img class="icon" src="./assets/icons/minus.png" alt="minus">
-            
-    `;
+                <h3>${menu[categoryIndex].category}</h3>
+                <h3>${item.dish} - ${item.price.toFixed(2)}€</h3>
+                <img class="icon" src="./assets/icons/add.png" alt="add">
+                <img class="icon" src="./assets/icons/minus.png" alt="minus">
+                
+        `;
+
+    menuBasket.push(
+      menu[categoryIndex] && menu[categoryIndex].items[itemIndex]
+    );
+  }
+}
+
+function addToBasket() {
+  // const item = menu[categoryIndex].items[itemIndex];
+  let basketIndex = basket.findIndex((basketItem) => {
+    return basketItem.dish === item.dish;
+  });
+  if (basketIndex === -1) {
+    basket.push({ dish: item.dish, amount: 1 });
+  } else {
+    basket[basketIndex]["amount"]++;
   }
 }

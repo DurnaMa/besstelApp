@@ -50,6 +50,7 @@ p {
 }
 
 .basket-container {
+    overflow:auto;
     position: sticky;
     min-width: 20%;
     height: 80vh;
@@ -61,7 +62,8 @@ p {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     text-align: center;
 }
 
@@ -111,7 +113,7 @@ h3 {
     gap: 5px;
 }
 
-img{
+img {
     overflow-clip-margin: content-box;
     overflow: clip;
     width: 900px;
