@@ -182,11 +182,10 @@ let menu = [
 
 let menuBasket = [
   {
-    category: [],
     items: [
       {
-        dish: "",
-        price: "",
+        dish: [],
+        price: [],
         amount: 0,
         subTotal: 0.0,
         total: 0.0,
