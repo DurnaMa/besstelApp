@@ -70,23 +70,23 @@ function addBasket(categoryIndex, itemIndex) {
   if (menu[categoryIndex] && menu[categoryIndex].items[itemIndex]) {
     let item = menu[categoryIndex].items[itemIndex];
 
-    for (let basketIndex = 0; basketIndex < item.length; basketIndex++) {
-      let basketIndex = menuBasket.findIndex((basketItem) => {
-        return basketItem === dish;
-      });
+    let foundIndex = menuBasket.findIndex((basketItem) => {
+      return basketItem.dish === item.dish;
+    });
 
-      if (basketIndex === -1) {
-        menuBasket.push({ dish: item.dish, amount: 1, price: item.price });
-      } else {
-        menuBasket[basketIndex]["amount"]++;
-      }
+    if (foundIndex === -1) {
+      menuBasket.push({ dish: item.dish, amount: 1, price: item.price });
+    } else {
+      menuBasket[foundIndex]["amount"]++;
     }
-    basketContainer.innerHTML += /*html*/ `
-                <h3>${menu[categoryIndex].category}</h3>
-                <h3>${item.dish} - ${item.price.toFixed(2)}€</h3>
-                <img class="icon" src="./assets/icons/add.png" alt="add">
-                <img class="icon" src="./assets/icons/minus.png" alt="minus">
-                
-        `;
+
+    if (!basketContainer.innerHTML.includes(item.dish)) {
+      basketContainer.innerHTML += /*html*/ `
+      <h3>${menu[categoryIndex].category}</h3>
+      <h3>${item.dish} - ${item.price.toFixed(2)}€</h3>
+      <img class="icon" src="./assets/icons/add.png" alt="add">
+      <img class="icon" src="./assets/icons/minus.png" alt="minus">
+      `;
+    }
   }
 }
