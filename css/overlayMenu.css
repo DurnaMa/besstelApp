@@ -47,7 +47,7 @@ body {
     align-items: center;
     position: relative;
     padding: 10px 32px;
-    border: rgb(255,128,0,) solid 2.4px;
+    border: rgb(255, 128, 0) solid 2.4px;
     border-radius: 4px;
     color: rgb(43, 25, 8);
     font-size: 24px;
@@ -67,7 +67,7 @@ body {
 }
 
 .button:active {
-    border-color: rgba(255,128,0, 0.75);
+    border-color: rgba(255, 128, 0, 0.75);
 }
 
 .button::after,
@@ -76,7 +76,7 @@ body {
     position: absolute;
     width: 200px;
     aspect-ratio: 1;
-    background: rgb(255,128,0);
+    background: rgb(255, 128, 0);
     opacity: 50%;
     border-radius: 50%;
     transition: transform 500ms, background 300ms;
@@ -102,5 +102,5 @@ body {
 
 .button:active:before,
 .button:active:after {
-    background: rgba(255,128,0, 0.75);
+    background: rgba(255, 128, 0, 0.75);
 }

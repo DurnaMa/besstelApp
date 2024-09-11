@@ -50,7 +50,7 @@ p {
 }
 
 .basket-container {
-    overflow:auto;
+    overflow: auto;
     position: sticky;
     min-width: 20%;
     height: 80vh;
@@ -114,9 +114,9 @@ h4 {
 }
 
 img {
-    overflow-clip-margin: content-box;
-    overflow: clip;
-    width: 900px;
-    height: 300px;
+    image-orientation: none;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
     border-radius: 30px;
 }
