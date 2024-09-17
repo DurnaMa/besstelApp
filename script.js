@@ -1,7 +1,6 @@
 function init() {
     renderMenus();
     renderShoppingBasket();
-    addBasket();
 }
 
 function renderMenus() {
@@ -9,12 +8,14 @@ function renderMenus() {
 
     for (let categoryIndex = 0; categoryIndex < menu.length; categoryIndex++) {
         menuContainer.innerHTML += /*html*/ `
-          <div class="category">
-              <h3>${menu[categoryIndex].category}</h3>
-          </div>
-          <img src="${menu[categoryIndex].menu_imge}" alt="foto">
-          <div id="category${categoryIndex}"></div>
-          `;
+        <div class="">
+            <div class="category">
+                <h3>${menu[categoryIndex].category}</h3>
+            </div>
+            <img src="${menu[categoryIndex].menu_imge}" alt="foto">
+            <div id="category${categoryIndex}"></div>
+        </div>
+        `;
 
         renderItems(categoryIndex);
     }
@@ -57,13 +58,35 @@ function renderShoppingBasket() {
     let basketContainer = document.getElementById("shoppingBasket");
 
     if (basketContainer) {
-        basketContainer.innerHTML = /*html*/ `
-          <h3>Fülle deinen Warenkorb</h3>
-          <h4>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</h4>
-      `;
-    } else {
+        basketContainer.innerHTML = ''; // Inhalt des Warenkorbs zurücksetzen
+
+        if (menuBasket[0].items.length > 0) {
+            // Jeden Artikel im Warenkorb durchlaufen und anzeigen
+            for (let i = 0; i < menuBasket[0].items.length; i++) {
+                let basketItem = menuBasket[0].items[i];
+                basketContainer.innerHTML += /*html*/ `
+                    <h3>${basketItem.dish} - ${basketItem.price.toFixed(2)}€</h3>
+                    <h4>Anzahl: ${basketItem.amount}</h4>
+                    <button onclick="increaseAmount(${i})">
+                        <img class="icon" src="./assets/icons/add.png" alt="add">
+                    </button>
+                    <button onclick="decreaseAmount(${i})">
+                        <img class="icon" src="./assets/icons/minus.png" alt="minus">
+                    </button>
+                `;
+            }
+            // Gesamtpreis berechnen und anzeigen
+            calculatePrice();
+        } else {
+            // Wenn der Warenkorb leer ist
+            basketContainer.innerHTML = /*html*/ `
+                <h3>Fülle deinen Warenkorb</h3>
+                <h4>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</h4>
+            `;
+        }
     }
 }
+
 
 function addBasket(categoryIndex, itemIndex) {
     let basketContainer = document.getElementById(`shoppingBasket`);
@@ -71,7 +94,7 @@ function addBasket(categoryIndex, itemIndex) {
     if (menu[categoryIndex] && menu[categoryIndex].items[itemIndex]) {
         let item = menu[categoryIndex].items[itemIndex];
 
-        let foundIndex = menuBasket.findIndex((basketItem) => {
+        let foundIndex = menuBasket[0].items.findIndex((basketItem) => {
             return basketItem.dish === item.dish;
         });
 
@@ -79,20 +102,43 @@ function addBasket(categoryIndex, itemIndex) {
             menuBasket[0].items.push({
                 dish: item.dish,
                 price: item.price,
-                amount: item.amount,
+                amount: 1,
             });
         } else {
             menuBasket[0].items[foundIndex].amount++;
         }
 
-        if (!basketContainer.innerHTML.includes(item.dish)) {
-            basketContainer.innerHTML += /*html*/ `
-        <h3>${menu[categoryIndex].category}</h3>
-        <h3>${item.dish} - ${item.price.toFixed(2)}€</h3>
-        <h4>Anzahl: ${item.amount} </h4>
-        <img class="icon" src="./assets/icons/add.png" alt="add">
-        <img class="icon" src="./assets/icons/minus.png" alt="minus">
-        `;
+        renderShoppingBasket();
+    }
+}
+
+function calculatePrice() {
+    let totalPrice = 0;
+
+    if (menuBasket && menuBasket[0] && menuBasket[0].items) {
+        for (let i = 0; i < menuBasket[0].items.length; i++) {
+            let item = menuBasket[0].items[i];
+            totalPrice += item.price * item.amount;
         }
     }
+
+    // Gesamtpreis im Warenkorb anzeigen
+    let basketContainer = document.getElementById("shoppingBasket");
+    if (basketContainer) {
+        basketContainer.innerHTML += `<h3>Gesamtpreis: ${totalPrice.toFixed(2)}€</h3>`;
+    }
+}
+
+function increaseAmount(index) {
+    menuBasket[0].items[index].amount++;
+    renderShoppingBasket();
+}
+
+function decreaseAmount(index) {
+    menuBasket[0].items[index].amount--;
+    if (menuBasket[0].items[index].amount <= 0) {
+        // Artikel aus dem Warenkorb entfernen
+        menuBasket[0].items.splice(index, 1);
+    }
+    renderShoppingBasket();
 }

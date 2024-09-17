@@ -202,17 +202,7 @@ let menu = [
 ];
 
 let menuBasket = [
-  {
-    items: [
-      {
-        dish: [],
-        price: [],
-        amount: [],
-        price: [],
-        amount: [],
-        subTotal: 0.0,
-        total: 0.0,
-      },
-    ],
-  },
+    {
+        items: [],
+    },
 ];
