@@ -58,10 +58,10 @@ function renderShoppingBasket() {
     let basketContainer = document.getElementById("shoppingBasket");
 
     if (basketContainer) {
-        basketContainer.innerHTML = ''; // Inhalt des Warenkorbs zurücksetzen
+        basketContainer.innerHTML = '';
 
         if (menuBasket[0].items.length > 0) {
-            // Jeden Artikel im Warenkorb durchlaufen und anzeigen
+            
             for (let i = 0; i < menuBasket[0].items.length; i++) {
                 let basketItem = menuBasket[0].items[i];
                 basketContainer.innerHTML += /*html*/ `
@@ -75,10 +75,8 @@ function renderShoppingBasket() {
                     </button>
                 `;
             }
-            // Gesamtpreis berechnen und anzeigen
             calculatePrice();
         } else {
-            // Wenn der Warenkorb leer ist
             basketContainer.innerHTML = /*html*/ `
                 <h3>Fülle deinen Warenkorb</h3>
                 <h4>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</h4>
@@ -122,7 +120,6 @@ function calculatePrice() {
         }
     }
 
-    // Gesamtpreis im Warenkorb anzeigen
     let basketContainer = document.getElementById("shoppingBasket");
     if (basketContainer) {
         basketContainer.innerHTML += `<h3>Gesamtpreis: ${totalPrice.toFixed(2)}€</h3>`;
@@ -137,7 +134,6 @@ function increaseAmount(index) {
 function decreaseAmount(index) {
     menuBasket[0].items[index].amount--;
     if (menuBasket[0].items[index].amount <= 0) {
-        // Artikel aus dem Warenkorb entfernen
         menuBasket[0].items.splice(index, 1);
     }
     renderShoppingBasket();
