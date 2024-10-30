@@ -122,3 +122,25 @@ img {
 }
 
 /* resposive */
+.header {
+    font-size: 32px;
+    padding: 2%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 24px;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

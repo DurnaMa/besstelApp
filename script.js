@@ -58,15 +58,16 @@ function renderShoppingBasket() {
     let basketContainer = document.getElementById("shoppingBasket");
 
     if (basketContainer) {
-        basketContainer.innerHTML = '';
+        basketContainer.innerHTML = "";
 
         if (menuBasket[0].items.length > 0) {
-            
             for (let i = 0; i < menuBasket[0].items.length; i++) {
                 let basketItem = menuBasket[0].items[i];
                 basketContainer.innerHTML += /*html*/ `
-                    <h3>${basketItem.dish} - ${basketItem.price.toFixed(2)}€</h3>
-                    <h4>Anzahl: ${basketItem.amount}</h4>
+                    <strong>${basketItem.dish} - ${basketItem.price.toFixed(
+                    2
+                )}€</strong>
+                    <strong>Anzahl: ${basketItem.amount}</strong>
                     <button onclick="increaseAmount(${i})">
                         <img class="icon" src="./assets/icons/add.png" alt="add">
                     </button>
@@ -78,13 +79,33 @@ function renderShoppingBasket() {
             calculatePrice();
         } else {
             basketContainer.innerHTML = /*html*/ `
-                <h3>Fülle deinen Warenkorb</h3>
-                <h4>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</h4>
+                <div class="empty-basket">
+                    <img class="empty-icon" src="./assets/icons/empty-basket.png" alt="empty basket">
+                    <h3>Fülle deinen Warenkorb</h3>
+                    <p>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
+                </div>
             `;
         }
     }
 }
 
+// toggle
+function toggleDelivery() {
+    let deliveryBtn = document.getElementById('deliveryBtn');
+    let pickupBtn = document.getElementById('pickupBtn');
+
+    deliveryBtn.classList.add('active');
+    pickupBtn.classList.remove('active');
+}
+
+function togglePickup() {
+    let deliveryBtn = document.getElementById('deliveryBtn');
+    let pickupBtn = document.getElementById('pickupBtn');
+
+    pickupBtn.classList.add('active');
+    deliveryBtn.classList.remove('active');
+}
+// toggle end
 
 function addBasket(categoryIndex, itemIndex) {
     let basketContainer = document.getElementById(`shoppingBasket`);
@@ -122,7 +143,9 @@ function calculatePrice() {
 
     let basketContainer = document.getElementById("shoppingBasket");
     if (basketContainer) {
-        basketContainer.innerHTML += `<h3>Gesamtpreis: ${totalPrice.toFixed(2)}€</h3>`;
+        basketContainer.innerHTML += `<h3>Gesamtpreis: ${totalPrice.toFixed(
+            2
+        )}€</h3>`;
     }
 }
 

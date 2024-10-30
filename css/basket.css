@@ -1,0 +1,103 @@
+.cart-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+.cart-header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+}
+.cart-header button {
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    flex: 1;
+}
+.cart-header button.active {
+    background-color: #ff6d00;
+    color: #fff;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.cart-item-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cart-controls button {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.cart-summary {
+    background-color: #ffefd5;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #a18000;
+    font-size: 14px;
+}
+.cart-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+.cart-footer div {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.cart-footer button {
+    background-color: #ff6d00;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+.cart-footer button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.empty-basket {
+    text-align: center;
+    margin-top: 50px;
+}
+.empty-icon {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+.empty-basket h3 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.empty-basket p {
+    color: #666;
+    font-size: 14px;
+}
