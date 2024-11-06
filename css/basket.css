@@ -101,3 +101,36 @@
     color: #666;
     font-size: 14px;
 }
+
+.basket-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.button-add {
+    width: 30px;
+    height: 30px;
+}
+
+.button-minus {
+    width: 30px;
+    height: 30px;
+}
+.basket {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.basket-menu {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.keineAnug {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}

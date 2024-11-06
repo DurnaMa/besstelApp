@@ -64,16 +64,23 @@ function renderShoppingBasket() {
             for (let i = 0; i < menuBasket[0].items.length; i++) {
                 let basketItem = menuBasket[0].items[i];
                 basketContainer.innerHTML += /*html*/ `
-                    <strong>${basketItem.dish} - ${basketItem.price.toFixed(
-                    2
-                )}€</strong>
-                    <strong>Anzahl: ${basketItem.amount}</strong>
-                    <button onclick="increaseAmount(${i})">
-                        <img class="icon" src="./assets/icons/add.png" alt="add">
-                    </button>
-                    <button onclick="decreaseAmount(${i})">
-                        <img class="icon" src="./assets/icons/minus.png" alt="minus">
-                    </button>
+                <div class="basket">
+                    <div >
+                        <strong class="basket-menu">
+                            <div>${basketItem.dish}</div>
+                            <div>${basketItem.price.toFixed(2)}€</div>
+                        </strong>
+                    </div>
+                    <div class="keineAnug">
+                        <button class="button-add" onclick="increaseAmount(${i})">
+                            <img class="basket-icon" src="./assets/icons/add.png" alt="add">
+                        </button>
+                        <strong> ${basketItem.amount}</strong>
+                        <button class="button-minus" onclick="decreaseAmount(${i})">
+                            <img class="basket-icon" src="./assets/icons/minus.png" alt="minus">
+                        </button>
+                    </div>
+                </div>
                 `;
             }
             calculatePrice();
@@ -91,19 +98,19 @@ function renderShoppingBasket() {
 
 // toggle
 function toggleDelivery() {
-    let deliveryBtn = document.getElementById('deliveryBtn');
-    let pickupBtn = document.getElementById('pickupBtn');
+    let deliveryBtn = document.getElementById("deliveryBtn");
+    let pickupBtn = document.getElementById("pickupBtn");
 
-    deliveryBtn.classList.add('active');
-    pickupBtn.classList.remove('active');
+    deliveryBtn.classList.add("active");
+    pickupBtn.classList.remove("active");
 }
 
 function togglePickup() {
-    let deliveryBtn = document.getElementById('deliveryBtn');
-    let pickupBtn = document.getElementById('pickupBtn');
+    let deliveryBtn = document.getElementById("deliveryBtn");
+    let pickupBtn = document.getElementById("pickupBtn");
 
-    pickupBtn.classList.add('active');
-    deliveryBtn.classList.remove('active');
+    pickupBtn.classList.add("active");
+    deliveryBtn.classList.remove("active");
 }
 // toggle end
 
