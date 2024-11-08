@@ -7,9 +7,14 @@ class IncludeHTML extends HTMLElement {
                 throw new Error(
                     `Failed to fetch ${file}: ${response.statusText}`
                 );
-            this.innerHTML = await response.text();
+
+            if (this.isConnected) {
+                this.innerHTML = await response.text();
+            }
         } catch (error) {
-            this.innerHTML = "Page not found";
+            if (this.isConnected) {
+                this.innerHTML = "Page not found";
+            }
             console.error(error);
         }
     }

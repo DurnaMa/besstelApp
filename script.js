@@ -71,7 +71,7 @@ function renderShoppingBasket() {
                             <div>${basketItem.price.toFixed(2)}€</div>
                         </strong>
                     </div>
-                    <div class="keineAnug">
+                    <div class="amount">
                         <button class="button-add" onclick="increaseAmount(${i})">
                             <img class="basket-icon" src="./assets/icons/add.png" alt="add">
                         </button>
@@ -139,20 +139,35 @@ function addBasket(categoryIndex, itemIndex) {
 }
 
 function calculatePrice() {
-    let totalPrice = 0;
-
     if (menuBasket && menuBasket[0] && menuBasket[0].items) {
-        for (let i = 0; i < menuBasket[0].items.length; i++) {
-            let item = menuBasket[0].items[i];
-            totalPrice += item.price * item.amount;
+        menuBasket[0].total = 0.0;
+        menuBasket[0].subTotal = [];
+
+        for (
+            let indexCalculatePrice = 0;
+            indexCalculatePrice < menuBasket[0].items.length;
+            indexCalculatePrice++
+        ) {
+            let item = menuBasket[0].items[indexCalculatePrice];
+            menuBasket[0].subTotal[indexCalculatePrice] =
+                item.price * item.amount;
+            menuBasket[0].total += menuBasket[0].subTotal[indexCalculatePrice];
+        }
+
+        if (menuBasket[0].items.length === 0) {
+            menuBasket[0].totalWithDelivery = 0;
+        } else {
+            menuBasket[0].totalWithDelivery =
+                menuBasket[0].total + menuBasket[0].deliveryCost;
         }
     }
 
     let basketContainer = document.getElementById("shoppingBasket");
     if (basketContainer) {
-        basketContainer.innerHTML += `<h3>Gesamtpreis: ${totalPrice.toFixed(
-            2
-        )}€</h3>`;
+        basketContainer.innerHTML += /*html*/ `
+            <button onclick="openCashDesk()" id="cashDesk" class="total-price">
+                <strong>Gesamtpreis: ${menuBasket[0].total.toFixed(2)}€</strong>
+            </button>`;
     }
 }
 
@@ -167,4 +182,25 @@ function decreaseAmount(index) {
         menuBasket[0].items.splice(index, 1);
     }
     renderShoppingBasket();
+}
+
+function saveBasket() {
+    sessionStorage.setItem("shoppingBasket", JSON.stringify(shoppingBasket));
+}
+
+function openCashDesk() {
+    document.getElementById('cashDeskContainer').classList.remove("d-none");
+    document.getElementById('cashDeskContainer').innerHTML = /*html*/ `
+        <div class="centered-container">
+            <div class="text">
+                <p>Das ist ein Lieferando-Testprojekt.</p>
+                <br>
+                <p>Umzuschließen, im Fenster Drucken</p>
+            </div>
+        </div>
+    `;
+}
+
+function closeCashDesk() {
+    document.getElementById("cashDeskContainer").classList.add("d-none");
 }
