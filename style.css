@@ -157,61 +157,14 @@ img {
 .d-none {
     display: none;
 }
-/* mobil */
-
-.shoppingBasketButton {
-    position: fixed;
-    bottom: 56px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.shoppingBasketButton:hover {
-    -ms-transform: scale(1.1); 
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1); 
-}
-.shoppingBasketButton button {
-    cursor: pointer;
-    width: 240px;
-    background-color: darkorange;
-    color: white;
-    font-weight: 500;
-    font-size: 16px;
-    border: 1px solid rgba(255,255,255,0.75);
-    border-radius: 24px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 16px;
-    box-shadow: 0px 0px 20px 9px rgba(255,255,255,0.75);
-}
-#shoppingBasketInputMobile,
-#shoppingBasketInput {
-    overflow-y: auto;
-}
-
-/* ende mobil */
 /* resposive */
 .header {
     font-size: 32px;
     padding: 2%;
 }
 
-@media (max-width: 820ox) {
-    .basket-container {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        font-size: 24px;
-    }
+.menu-mobil{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

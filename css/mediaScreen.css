@@ -1,0 +1,26 @@
+@media (max-width: 820px) {
+    .basket-container {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .footer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 24px;
+    }
+}

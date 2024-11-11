@@ -107,11 +107,28 @@
 .basket-icon {
     width: 25px;
     height: 25px;
+    background-color: #ff6d00;
 }
 
 .button-add {
     width: 30px;
     height: 30px;
+}
+
+button:hover {
+    letter-spacing: 3px;
+    background-color: #ff6d00;
+    color: #ffffff;
+    box-shadow: #ff6d00 0px 7px 20px 0px;
+}
+
+button:active {
+    letter-spacing: 3px;
+    background-color: #ff6d00;
+    color: #ffffff;
+    box-shadow: #ff6d00 0px 7px 29px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
 }
 
 .button-minus {
@@ -128,7 +145,7 @@
 .basket-menu {
     display: flex;
     justify-content: space-between;
-    gap: 50px;
+    gap: 15px;
     font-style: italic;
     font-weight: 600;
     font-size: 18px;
@@ -143,7 +160,7 @@
     font-size: 20px;
 }
 
-.total-price{
+.total-price {
     margin: 15px 0px 15px 0px;
     text-align: center;
     font-style: italic;

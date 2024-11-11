@@ -8,7 +8,7 @@ function renderMenus() {
 
     for (let categoryIndex = 0; categoryIndex < menu.length; categoryIndex++) {
         menuContainer.innerHTML += /*html*/ `
-        <div class="">
+        <div class="menu-mobil">
             <div class="category">
                 <h3>${menu[categoryIndex].category}</h3>
             </div>
@@ -32,7 +32,7 @@ function renderItems(categoryIndex) {
         const item = menu[categoryIndex].items[itemIndex];
         itemContainer.innerHTML += /*html*/ `
               <h4>${item.dish} - ${item.price.toFixed(2)}€</h4>
-              <p>Zutaten: ${item.ingredients}</p>
+              <p>Zutaten: ${item.ingredients} </p>
               <p >Kommentare: </p>
           `;
 
