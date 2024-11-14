@@ -207,7 +207,5 @@ let menu = [
 ];
 
 let menuBasket = [
-    {
-        items: [],
-    },
+   
 ];
