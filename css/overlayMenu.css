@@ -29,46 +29,45 @@ body {
     transform: translateX(0);
 }
 
-.close-button {
+.close-button-menu {
     position: absolute;
     right: 16px;
     top: 16px;
 }
 
 /* From Uiverse.io by Randdose */
-.button {
-    all: unset;
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 10px 32px;
-    border: rgb(255, 128, 0) solid 2.4px;
-    border-radius: 4px;
-    color: rgb(43, 25, 8);
-    font-size: 24px;
+.button-menu {
+    margin: 15px 0px 15px 0px;
+    text-align: center;
+    font-style: italic;
     font-weight: 600;
+    font-size: 20px;
+
+    background-color: #ff6d00;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    overflow: hidden;
-    transition: border 300ms, color 300ms;
-    user-select: none;
+    width: 100%;
 }
 
-.button p {
+.button-menu p {
     z-index: 1;
 }
 
-.button:hover {
+.button-menu:hover {
     color: #212121;
 }
 
-.button:active {
+.button-menu:active {
     border-color: rgba(255, 128, 0, 0.75);
 }
 
-.button::after,
-.button::before {
+.button-menu::after,
+.button-menu::before {
     content: "";
-    position: absolute;
+    position: relative;
     width: 200px;
     aspect-ratio: 1;
     background: rgb(255, 128, 0);
@@ -77,25 +76,25 @@ body {
     transition: transform 500ms, background 300ms;
 }
 
-.button::before {
+.button-menu::before {
     left: 0;
     transform: translateX(-128px);
 }
 
-.button::after {
+.button-menu::after {
     right: 0;
     transform: translateX(128px);
 }
 
-.button:hover:before {
+.button-menu:hover:before {
     transform: translateX(-16px);
 }
 
-.button:hover:after {
+.button-menu:hover:after {
     transform: translateX(16px);
 }
 
-.button:active:before,
-.button:active:after {
+.button-menu:active:before,
+.button-menu:active:after {
     background: rgba(255, 128, 0, 0.75);
 }

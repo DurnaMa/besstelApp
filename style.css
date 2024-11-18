@@ -60,9 +60,16 @@ p {
     margin: 20px;
 }
 
-.basket-container1{
-    margin: 0px 5px 0px 5px;
-}
+/* .basket-container-mobil{
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 3px solid #333;
+    overflow-y: auto;
+} */
 
 h1,
 h2,

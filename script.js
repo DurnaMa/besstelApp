@@ -5,6 +5,7 @@ function init() {
     renderMenus();
     //    loadBasket();
     renderShoppingBasket();
+    renderBasket();
 }
 
 function renderMenus() {
@@ -23,6 +24,30 @@ function renderMenus() {
 
         renderItems(categoryIndex);
     }
+}
+
+function renderBasket() {
+    let basketContainer = document.getElementById("basket");
+    basketContainer.innerHTML = "";
+    //let basket = JSON.parse(localStorage.getItem("basket"));
+    basketContainer.innerHTML += /*html*/ `
+        <div class="basket-container1">
+            <h2>Warenkorb</h2>
+
+            <div class="cart-header">
+                <button id="deliveryBtn" class="delivery active" onclick="toggleDelivery()">
+                    Lieferung<br />20 - 45 min <br>ab 20 €
+                </button>
+                <button id="pickupBtn" class="pickup" onclick="togglePickup()">
+                    Abholung<br />15 min
+                </button>
+            </div>
+
+            <div id="shoppingBasket"></div>
+            <div onclick="closeCashDesk()" id="cashDeskContainer"></div>
+        </div>`;
+
+    renderShoppingBasket();
 }
 
 function renderItems(categoryIndex) {
@@ -53,7 +78,7 @@ function renderItems(categoryIndex) {
         }
 
         itemContainer.innerHTML += /*html*/ `
-          <button class="button" onclick="addBasket(${categoryIndex},${itemIndex})">hinzufügen</button>
+          <button class="button-menu" onclick="addBasket(${categoryIndex},${itemIndex})">hinzufügen</button>
           `;
     }
 }
@@ -146,7 +171,6 @@ function calculatePrice() {
     sum = 0;
 
     if (menuBasket && menuBasket.length > 0) {
-        
         for (
             let menuBasketIndex = 0;
             menuBasketIndex < menuBasket.length;
@@ -202,7 +226,15 @@ function openCashDesk() {
     `;
 }
 
-
 function closeCashDesk() {
     document.getElementById("cashDeskContainer").classList.add("d-none");
+}
+
+function mobilOpenMenu() {
+    let basketContainer = document.getElementById("basket");
+    basketContainer.classList.add("basket-container-mobil");
+    basketContainer.style.display = "flex";
+    
+    //renderShoppingBasket();
+    renderBasket();
 }

@@ -29,23 +29,10 @@
                     <h2>Speisekarte</h2>
                     <div id="menu"></div>
                 </div>
-                <div class="basket-container">
-                    <div class="basket-container1">
-                        <h2>Warenkorb</h2>
-
-                        <div class="cart-header">
-                            <button id="deliveryBtn" class="delivery active" onclick="toggleDelivery()">
-                                Lieferung<br />20 - 45 min <br>ab 20 €
-                            </button>
-                            <button id="pickupBtn" class="pickup" onclick="togglePickup()">
-                                Abholung<br />15 min
-                            </button>
-                        </div>
-
-                        <div id="shoppingBasket"></div>
-                        <div onclick="closeCashDesk()" id="cashDeskContainer"></div>
-                    </div>
-                </div>
+                <div class="basket-container" id="basket"></div>
+            </section>
+            <section class="section-mobil">
+                    <button id="mobilMenu" class="mobilMenu" onclick="mobilOpenMenu()" >Kasse</button>
             </section>
         </main>
 
