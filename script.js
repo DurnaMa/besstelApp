@@ -6,6 +6,9 @@ function init() {
     //    loadBasket();
     renderShoppingBasket();
     renderBasket();
+    closeCashDesk();
+    renderCategory();
+
 }
 
 function renderMenus() {
@@ -15,7 +18,7 @@ function renderMenus() {
         menuContainer.innerHTML += /*html*/ `
         <div class="menu-mobil">
             <div class="category">
-                <h3>${menu[categoryIndex].category}</h3>
+                <h3 id="${menu[categoryIndex].category.toLowerCase()}">${menu[categoryIndex].category}</h3>
             </div>
             <img src="${menu[categoryIndex].menu_imge}" alt="foto">
             <div id="category${categoryIndex}"></div>
@@ -31,9 +34,11 @@ function renderBasket() {
     basketContainer.innerHTML = "";
     //let basket = JSON.parse(localStorage.getItem("basket"));
     basketContainer.innerHTML += /*html*/ `
-        <div class="basket-container1">
+        <div id="close">
+            <button onclick="mobilCloseMenue()">
+                <img class="close" src="./assets/icons/close.png" alt="close">
+            </button>
             <h2>Warenkorb</h2>
-
             <div class="cart-header">
                 <button id="deliveryBtn" class="delivery active" onclick="toggleDelivery()">
                     Lieferung<br />20 - 45 min <br>ab 20 €
@@ -48,6 +53,7 @@ function renderBasket() {
         </div>`;
 
     renderShoppingBasket();
+ 
 }
 
 function renderItems(categoryIndex) {
@@ -227,14 +233,36 @@ function openCashDesk() {
 }
 
 function closeCashDesk() {
-    document.getElementById("cashDeskContainer").classList.add("d-none");
+    document.getElementById("cashDeskContainer").classList.add("d-none");    
 }
 
 function mobilOpenMenu() {
     let basketContainer = document.getElementById("basket");
     basketContainer.classList.add("basket-container-mobil");
-    basketContainer.style.display = "flex";
-    
-    //renderShoppingBasket();
+
     renderBasket();
 }
+
+function mobilCloseMenue() {
+    document.getElementById("close").classList.add("basket-container");
+    document.getElementById("basket").classList.remove("basket-container-mobil");  
+}
+
+function renderCategory() {
+    let categoryContainer = document.getElementById("categoryTop");
+
+    for (let categoryIndex = 0; categoryIndex < menu.length; categoryIndex++) {
+        categoryContainer.innerHTML += /*html*/ `
+        <div class="category">
+            <a href="#${menu[categoryIndex].category.toLowerCase()}">${menu[categoryIndex].category}</a>
+        </div>
+                `;
+    }
+
+    scrollToTop();
+}
+
+// function scrollToTop() {
+//     const categoryContainer = document.getElementById("categoryTop");
+//     categoryContainer.scrollIntoView(true);
+// }

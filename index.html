@@ -18,12 +18,22 @@
         <link rel="stylesheet" href="./css/assets.css" />
         <link rel="stylesheet" href="./css/overlayMenu.css" />
         <link rel="stylesheet" href="./css/fonts.css" />
-        <link rel="stylesheet" href="./css/mediaScreen.css">
+        <link rel="stylesheet" href="./css/mediaScreen.css" />
     </head>
     <body onload="init()">
         <include-html src="./templates/header.html"></include-html>
 
         <main>
+            <section class="top">
+                <div class="restaurantDescription">
+                    <p>
+                        <strong>Mindestbestellwert: 20,00€</strong>
+                    </p>
+                    <div class="categoryTop">
+                        <div id="categoryTop"></div>
+                    </div>
+                </div>
+            </section>
             <section class="menu1">
                 <div class="menu-container" id="dish">
                     <h2>Speisekarte</h2>
@@ -32,7 +42,13 @@
                 <div class="basket-container" id="basket"></div>
             </section>
             <section class="section-mobil">
-                    <button id="mobilMenu" class="mobilMenu" onclick="mobilOpenMenu()" >Kasse</button>
+                <button
+                    id="mobilMenu"
+                    class="mobilMenu"
+                    onclick="mobilOpenMenu()"
+                >
+                    Kasse
+                </button>
             </section>
         </main>
 
