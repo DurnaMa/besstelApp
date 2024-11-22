@@ -21,42 +21,37 @@
         <link rel="stylesheet" href="./css/mediaScreen.css" />
     </head>
     <body onload="init()">
-        <include-html src="./templates/header.html"></include-html>
+        <div class="content">
+            <include-html src="./templates/header.html"></include-html>
 
-        <main>
-            <section class="top">
-                <div class="restaurantDescription">
-                    <p>
-                        <strong>Mindestbestellwert: 20,00€</strong>
-                    </p>
-                    <div class="categoryTop">
-                        <div id="categoryTop"></div>
+            <main class="background">
+                <section class="top">
+                    <div class="restaurantDescription">
+                        <p>
+                            <strong>Mindestbestellwert: 20,00€</strong>
+                        </p>
+                        <div class="categoryTop">
+                            <div id="categoryTop"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section class="menu1">
-                <div class="menu-container" id="dish">
-                    <h2>Speisekarte</h2>
-                    <div id="menu"></div>
-                </div>
-                <div class="basket-container" id="basket"></div>
-            </section>
-            <section class="section-mobil">
-                <button
-                    id="mobilMenu"
-                    class="mobilMenu"
-                    onclick="mobilOpenMenu()"
-                >
-                    Kasse
-                </button>
-            </section>
-        </main>
+                </section>
+                <section class="menu1">
+                    <div class="menu-container" id="dish">
+                        <h2>Speisekarte</h2>
+                        <div id="menu"></div>
+                    </div>
+                    <div class="basket-container" id="basket"></div>
+                </section>
+                <section id="mobilCashDesk" class="section-mobil">
+                </section>
+            </main>
 
-        <include-html src="./templates/footer.html"></include-html>
+            <include-html src="./templates/footer.html"></include-html>
 
-        <script src="./script.js"></script>
-        <script src="./js/include-html.js"></script>
-        <script src="./js/overlayMenu.js"></script>
-        <script src="./js/JSON.js"></script>
+            <script src="./script.js"></script>
+            <script src="./js/include-html.js"></script>
+            <script src="./js/overlayMenu.js"></script>
+            <script src="./js/JSON.js"></script>
+        </div>
     </body>
 </html>

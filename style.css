@@ -172,8 +172,7 @@ img {
 }
 
 .restaurantDescription {
-    /* display: flex;
-    justify-content:flex-start; */
+    width: calc(100% - 20px);
     padding: 2%;
     border: 3px solid #333;
     border-radius: 15px;
@@ -186,7 +185,8 @@ img {
 
 #categoryTop {
     display: flex;
-    gap: 30px;
+    justify-content:center;
+    gap: 15px;
 }
 
 .categoryTop a {
@@ -195,4 +195,13 @@ img {
     margin-bottom: 10px;
     text-decoration: none;
     color: #333;
+}
+
+p{
+    display: flex;
+    justify-content:center;
+}
+
+.basket-warenkorp{
+    margin: 10px;
 }

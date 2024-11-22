@@ -35,14 +35,10 @@ footer {
     flex-shrink: 0;
 }
 
-/* alt*/
 a {
     text-decoration: none;
 }
 
-.content {
-    width: 1920px;
-    height: auto;
-    overflow: hidden;
-    margin: 0 auto;
+.background{
+    background-color: #f8f8f8;
 }

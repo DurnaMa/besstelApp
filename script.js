@@ -8,7 +8,7 @@ function init() {
     renderBasket();
     closeCashDesk();
     renderCategory();
-
+    mobilCashDesk();
 }
 
 function renderMenus() {
@@ -18,7 +18,9 @@ function renderMenus() {
         menuContainer.innerHTML += /*html*/ `
         <div class="menu-mobil">
             <div class="category">
-                <h3 id="${menu[categoryIndex].category.toLowerCase()}">${menu[categoryIndex].category}</h3>
+                <h3 id="${menu[categoryIndex].category.toLowerCase()}">${
+            menu[categoryIndex].category
+        }</h3>
             </div>
             <img src="${menu[categoryIndex].menu_imge}" alt="foto">
             <div id="category${categoryIndex}"></div>
@@ -32,9 +34,8 @@ function renderMenus() {
 function renderBasket() {
     let basketContainer = document.getElementById("basket");
     basketContainer.innerHTML = "";
-    //let basket = JSON.parse(localStorage.getItem("basket"));
     basketContainer.innerHTML += /*html*/ `
-        <div id="close">
+        <div class="basket-warenkorp" id="basket">
             <button onclick="mobilCloseMenue()">
                 <img class="close" src="./assets/icons/close.png" alt="close">
             </button>
@@ -53,7 +54,6 @@ function renderBasket() {
         </div>`;
 
     renderShoppingBasket();
- 
 }
 
 function renderItems(categoryIndex) {
@@ -107,6 +107,11 @@ function renderShoppingBasket() {
                         </strong>
                     </div>
                     <div class="amount">
+                        <div class="trash">
+                            <button class="button-minus" onclick="trash(${i})">
+                                <img class="basket-icon" src="./assets/icons/trash.png" alt="trash">
+                            </button>
+                        </div>
                         <button class="button-add" onclick="increaseAmount(${i})">
                             <img class="basket-icon" src="./assets/icons/add.png" alt="add">
                         </button>
@@ -128,6 +133,8 @@ function renderShoppingBasket() {
                 </div>
             `;
         }
+
+        // mobilCashDesk();
     }
 }
 
@@ -170,6 +177,7 @@ function addBasket(categoryIndex, itemIndex) {
         }
 
         renderShoppingBasket();
+        saveBasket();
     }
 }
 
@@ -195,11 +203,14 @@ function calculatePrice() {
                 </button>`;
         }
     }
+
+    mobilCashDesk();
 }
 
 function increaseAmount(index) {
     menuBasket[index].amount++;
     renderShoppingBasket();
+    saveBasket();
 }
 
 function decreaseAmount(index) {
@@ -208,10 +219,7 @@ function decreaseAmount(index) {
         menuBasket.splice(index, 1);
     }
     renderShoppingBasket();
-}
-
-function saveBasket() {
-    sessionStorage.setItem("shoppingBasket", JSON.stringify(menuBasket));
+    saveBasket();
 }
 
 function openCashDesk() {
@@ -219,7 +227,7 @@ function openCashDesk() {
         alert("Der Mindestbestellwert beträgt 20,00€.");
         return;
     }
-
+    document.getElementById("cashDeskContainer").innerHTML = "";
     document.getElementById("cashDeskContainer").classList.remove("d-none");
     document.getElementById("cashDeskContainer").innerHTML = /*html*/ `
         <div class="centered-container">
@@ -230,10 +238,14 @@ function openCashDesk() {
             </div>
         </div>
     `;
+    
+    deleteAll();
+    sum = 0;
+    mobilCashDesk();
 }
 
 function closeCashDesk() {
-    document.getElementById("cashDeskContainer").classList.add("d-none");    
+    document.getElementById("cashDeskContainer").classList.add("d-none");
 }
 
 function mobilOpenMenu() {
@@ -243,9 +255,21 @@ function mobilOpenMenu() {
     renderBasket();
 }
 
+function mobilCashDesk() {
+    let basketContainer = document.getElementById("mobilCashDesk");
+
+    basketContainer.innerHTML = "";
+    basketContainer.innerHTML += /*html*/ `
+       <button id="mobilMenu" class="mobilMenu" onclick="mobilOpenMenu()">
+           Kasse ${sum.toFixed(2)}€
+       </button>`;
+}
+
 function mobilCloseMenue() {
-    document.getElementById("close").classList.add("basket-container");
-    document.getElementById("basket").classList.remove("basket-container-mobil");  
+    document.getElementById("basket").classList.add("basket-container");
+    document
+        .getElementById("basket")
+        .classList.remove("basket-container-mobil");
 }
 
 function renderCategory() {
@@ -254,15 +278,26 @@ function renderCategory() {
     for (let categoryIndex = 0; categoryIndex < menu.length; categoryIndex++) {
         categoryContainer.innerHTML += /*html*/ `
         <div class="category">
-            <a href="#${menu[categoryIndex].category.toLowerCase()}">${menu[categoryIndex].category}</a>
+            <a href="#${menu[categoryIndex].category.toLowerCase()}">${
+            menu[categoryIndex].category
+        }</a>
         </div>
                 `;
     }
-
-    scrollToTop();
 }
 
-// function scrollToTop() {
-//     const categoryContainer = document.getElementById("categoryTop");
-//     categoryContainer.scrollIntoView(true);
-// }
+function deleteAll() {
+    menuBasket = [];
+
+    renderShoppingBasket();
+}
+
+function saveBasket() {
+    localStorage.setItem("basket", JSON.stringify(menuBasket));
+    renderShoppingBasket();
+}
+
+function trash(menuIndex) {
+    menuBasket.splice(menuIndex, 1);
+    saveBasket();
+}
