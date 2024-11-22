@@ -222,11 +222,19 @@ function decreaseAmount(index) {
     saveBasket();
 }
 
+function showSnackbar(message) {
+    const snackbar = document.getElementById("snackbar");
+    snackbar.textContent = message;
+    snackbar.className = "show";
+    setTimeout(() => snackbar.className = snackbar.className.replace("show", ""), 3000);
+}
+
 function openCashDesk() {
     if (isDeliverySelected && sum < 20.0) {
-        alert("Der Mindestbestellwert beträgt 20,00€.");
+        showSnackbar("Der Mindestbestellwert beträgt 20,00€.");
         return;
     }
+
     document.getElementById("cashDeskContainer").innerHTML = "";
     document.getElementById("cashDeskContainer").classList.remove("d-none");
     document.getElementById("cashDeskContainer").innerHTML = /*html*/ `
