@@ -5,3 +5,5 @@ function showMenu() {
 function closeMenu() {
     document.getElementById("menu").classList.remove("show-overleay-menu");
 }
+
+function test () {}
